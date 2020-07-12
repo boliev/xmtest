@@ -13,4 +13,14 @@ Backend part:
  - Nginx
  - Redis
  
- 
+# Installation
+To fetch the code
+```
+git clone https://github.com/boliev/xmtest.git
+```
+
+Now you need to start the containers
+```
+cd xmtest
+docker-compose up
+```

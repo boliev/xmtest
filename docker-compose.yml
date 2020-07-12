@@ -17,9 +17,6 @@ services:
       - ./back:/var/app:cached
     command:
       /bin/bash -c "exec php-fpm"
-    environment:
-      XDEBUG_CONFIG: "remote_host=host.docker.internal remote_enable=1 remote_autostart=on  remote_port=9018 idekey=PHPSTORM"
-      PHP_IDE_CONFIG: "serverName=localhost"
 
   nginx:
     image: nginx:latest
