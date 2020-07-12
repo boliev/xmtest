@@ -42,9 +42,9 @@ class QuotationController extends AbstractController
             return $this->jsonValidationError($errors);
         }
 
-        $quotationFetchRequest = $quotationRequest->getQuotationFetchRequest();
-        try {
-            $company = $companyFetcher->getBySymbolOrThrow($quotationRequest->getCompany());
+		try {
+			$quotationFetchRequest = $quotationRequest->getQuotationFetchRequest();
+			$company = $companyFetcher->getBySymbolOrThrow($quotationRequest->getCompany());
             $quotations = $quotationFetcher->fetch($quotationFetchRequest);
         } catch (BadDateHttpException | QuotationClientException | CompanyNotFoundException $e) {
             return $this->jsonBadRequest($e->getMessage());

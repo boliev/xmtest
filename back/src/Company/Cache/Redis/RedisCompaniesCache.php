@@ -31,10 +31,14 @@ class RedisCompaniesCache implements CompaniesCacheInterface
 
     public function searchCompanyBySymbol(string $symbol): array
     {
-        return array_filter(
-            $this->getHashBySymbol($symbol),
-            fn (CompanyDTO $company) => 0 === strpos($company->getSymbol(), $symbol)
-        );
+        $result = [];
+        foreach ($this->getHashBySymbol($symbol) as $company) {
+            if (0 === strpos($company->getSymbol(), $symbol)) {
+                $result[] = $company;
+            }
+        }
+
+        return $result;
     }
 
     /**
